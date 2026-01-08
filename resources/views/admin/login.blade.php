@@ -14,15 +14,17 @@
 
         body { 
             background-color: var(--puskesmas-light); 
-            height: 100vh; 
+            min-height: 100vh;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
         }
 
         .card-login { 
-            width: 400px; 
+            width: 100%;
+            max-width: 400px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-radius: 15px; 
             border: none;
@@ -66,9 +68,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-        <div class="card-body p-4">
 
-        </div>
             <form action="{{ url('/login') }}" method="POST" novalidate>
                 @csrf               
                 <div class="mb-3">

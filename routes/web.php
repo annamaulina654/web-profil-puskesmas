@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,13 +10,13 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Halaman Dashboard (Hanya bisa diakses kalau sudah login)
-Route::get('/dashboard', function () {
-    return '<h1>Halo Admin! Anda berhasil login.</h1> <a href="/logout">Logout</a>';
-})->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-// Proses Logout
-Route::get('/logout', [AuthController::class, 'logout']);
+    Route::resource('admin/profil', ProfilController::class);
+
+});
