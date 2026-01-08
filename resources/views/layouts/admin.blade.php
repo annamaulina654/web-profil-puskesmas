@@ -115,11 +115,15 @@
                     Profil Puskesmas
                 </a>
             </li>
-<li>
-    <a href="#" class="{{ request()->is('admin/layanan*') ? 'active' : '' }}">Data Layanan</a>
-</li>
             <li>
-                <a href="#" class="{{ request()->is('admin/informasi*') ? 'active' : '' }}">Informasi & Berita</a>
+                <a href="{{ route('layanan.index') }}" class="{{ request()->is('admin/layanan*') ? 'active' : '' }}">
+                    Data Layanan
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('informasi.index') }}" class="{{ request()->is('admin/informasi*') ? 'active' : '' }}">
+                    Informasi
+                </a>
             </li>
             <li class="nav-item">
                 <small class="text-secondary ms-3 text-uppercase" style="font-size: 0.75rem; font-weight:bold;">Lainnya</small>

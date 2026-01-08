@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\InformasiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,5 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin/profil', ProfilController::class);
 
     Route::resource('admin/layanan', LayananController::class);
+
+    Route::resource('admin/informasi', InformasiController::class);
 
 });
