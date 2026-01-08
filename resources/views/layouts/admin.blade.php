@@ -115,9 +115,9 @@
                     Profil Puskesmas
                 </a>
             </li>
-            <li>
-                <a href="#" class="{{ request()->is('admin/layanan*') ? 'active' : '' }}">Data Layanan</a>
-            </li>
+<li>
+    <a href="#" class="{{ request()->is('admin/layanan*') ? 'active' : '' }}">Data Layanan</a>
+</li>
             <li>
                 <a href="#" class="{{ request()->is('admin/informasi*') ? 'active' : '' }}">Informasi & Berita</a>
             </li>
