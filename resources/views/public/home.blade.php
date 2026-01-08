@@ -4,16 +4,179 @@
 
 @section('content')
 
-<header class="py-5 bg-light border-bottom mb-4" style="background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(15, 81, 50, 0.8)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center;">
-    <div class="container text-center my-5">
-        <h1 class="fw-bolder text-white display-4">Selamat Datang di Puskesmas Sehat</h1>
-        <p class="lead text-white-50 mb-0">Melayani dengan Hati, Mengabdi untuk Negeri</p>
-        <div class="mt-4">
-            <a href="{{ route('public.layanan') }}" class="btn btn-warning btn-lg me-2">Lihat Layanan</a>
-            <a href="{{ route('public.kontak') }}" class="btn btn-outline-light btn-lg">Hubungi Kami</a>
-        </div>
+<style>
+    .carousel-item {
+        height: 85vh;
+        min-height: 500px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 15px;
+        bottom: 30%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-caption {
+            bottom: 20%;
+            padding: 15px;
+            width: 90%;
+            left: 5%; 
+            right: 5%;
+        }
+        .carousel-caption h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .carousel-caption p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .carousel-caption .btn {
+            padding: 5px 15px;
+            font-size: 0.85rem;
+        }
+    }
+
+    .service-card {
+        border: none;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+
+    .service-card .card-img-top {
+        transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    .news-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background-color: #fff;
+    }
+
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(25, 135, 84, 0.15);
+    }
+
+    .news-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        height: 220px;
+    }
+
+    .news-card .card-img-top,
+    .news-img-placeholder {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease, filter 0.4s ease;
+    }
+
+    .news-card:hover .card-img-top,
+    .news-card:hover .news-img-placeholder {
+        transform: scale(1.1) rotate(1.5deg);
+        filter: brightness(80%);
+    }
+
+    .news-category-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 2;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .news-btn {
+        border-radius: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .news-card:hover .news-btn {
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
+        color: white !important;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(25, 135, 84, 0.4);
+    }
+</style>
+
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
     </div>
-</header>
+
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000')">
+            <div class="carousel-caption">
+                <h1 class="display-4 fw-bolder text-white">Selamat Datang di Puskesmas Sehat</h1>
+                <p class="lead text-white">Melayani dengan Hati, Mengabdi untuk Negeri. Kesehatan Anda adalah Prioritas Kami.</p>
+                <div class="mt-4">
+                    <a href="{{ route('public.layanan') }}" class="btn btn-warning btn-lg me-2">Lihat Fasilitas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000')">
+            <div class="carousel-caption">
+                <h1 class="display-4 fw-bolder text-white">Informasi & Kegiatan</h1>
+                <p class="lead text-white">Dapatkan kabar terbaru seputar kegiatan posyandu, penyuluhan kesehatan, dan pengumuman penting.</p>
+                <div class="mt-4">
+                    <a href="{{ route('public.informasi') }}" class="btn btn-primary btn-lg">Baca Informasi</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1516574187841-693018f37bdd?auto=format&fit=crop&q=80&w=1000')">
+            <div class="carousel-caption">
+                <h1 class="display-4 fw-bolder text-white">Layanan IGD 24 Jam</h1>
+                <p class="lead text-white">Siap melayani kebutuhan darurat Anda kapan saja. Jangan ragu untuk menghubungi kami.</p>
+                <div class="mt-4">
+                    <a href="{{ route('public.kontak') }}" class="btn btn-danger btn-lg"><i class="fas fa-phone-alt me-2"></i> Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <section class="py-5">
     <div class="container">
@@ -47,7 +210,8 @@
             
             @forelse($layanan as $item)
             <div class="col mb-5">
-                <div class="card h-100 shadow-sm border-0">
+                <div class="card h-100 shadow-sm service-card">
+                    
                     @if($item->foto_layanan)
                         <img class="card-img-top" src="{{ asset('storage/'.$item->foto_layanan) }}" alt="{{ $item->nama_layanan }}" style="height: 200px; object-fit: cover;" />
                     @else
@@ -55,6 +219,7 @@
                             <i class="fas fa-medkit fa-3x"></i>
                         </div>
                     @endif
+                    
                     <div class="card-body p-4 text-center">
                         <div class="text-center">
                             <h5 class="fw-bolder">{{ $item->nama_layanan }}</h5>
@@ -85,30 +250,48 @@
         </div>
         <div class="row">
             @forelse($berita as $news)
-            <div class="col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    @if($news->gambar)
-                        <img class="card-img-top" src="{{ asset('storage/'.$news->gambar) }}" alt="..." style="height: 200px; object-fit: cover;">
-                    @else
-                        <div class="bg-light text-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <i class="fas fa-newspaper fa-3x"></i>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 news-card">
+                    
+                    <div class="news-img-wrapper">
+                        <span class="badge news-category-badge {{ $news->kategori_info == 'pengumuman' ? 'bg-warning text-dark' : ($news->kategori_info == 'kegiatan' ? 'bg-primary' : 'bg-info') }} text-uppercase py-2 px-3">
+                            {{ $news->kategori_info }}
+                        </span>
+
+                        @if($news->gambar)
+                            <img class="card-img-top" src="{{ asset('storage/'.$news->gambar) }}" alt="{{ $news->judul }}">
+                        @else
+                            <div class="news-img-placeholder bg-light text-secondary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-newspaper fa-4x opacity-50"></i>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <div class="small text-muted mb-3 mt-2">
+                            <i class="far fa-calendar-alt me-2 text-success"></i> {{ $news->tgl_posting->format('d F Y') }}
                         </div>
-                    @endif
-                    <div class="card-body">
-                        <div class="small text-muted mb-2">
-                            <i class="far fa-calendar-alt me-1"></i> {{ $news->tgl_posting->format('d M Y') }}
-                            &bull; 
-                            <span class="text-primary fw-bold text-uppercase" style="font-size: 0.8rem;">{{ $news->kategori_info }}</span>
+                        
+                        <h5 class="card-title h4 fw-bold mb-3">{{ $news->judul }}</h5>
+                        
+                        <p class="card-text text-muted mb-4 flex-grow-1">
+                            {{ Str::limit($news->isi, 100) }}
+                        </p>
+                        
+                        <div class="mt-auto">
+                            <a href="{{ route('public.informasi.show', $news->id_informasi) }}" class="btn btn-outline-success news-btn w-100">
+                                Baca Selengkapnya <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
                         </div>
-                        <h5 class="card-title h4">{{ $news->judul }}</h5>
-                        <p class="card-text text-muted">{{ Str::limit($news->isi, 100) }}</p>
-                        <a href="{{ route('public.informasi.show', $news->id_informasi) }}" class="btn btn-sm btn-primary">Baca Selengkapnya &rarr;</a>
                     </div>
                 </div>
             </div>
             @empty
-            <div class="col-12 text-center text-muted">
-                <p>Belum ada berita terbaru.</p>
+            <div class="col-12 text-center text-muted py-5">
+                <div class="bg-light rounded p-5">
+                    <i class="far fa-folder-open fa-4x mb-3 text-secondary"></i>
+                    <p class="fs-5 mb-0">Belum ada informasi terbaru.</p>
+                </div>
             </div>
             @endforelse
         </div>
