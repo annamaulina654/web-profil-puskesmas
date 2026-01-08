@@ -129,7 +129,9 @@
                 <small class="text-secondary ms-3 text-uppercase" style="font-size: 0.75rem; font-weight:bold;">Lainnya</small>
             </li>
             <li>
-                <a href="#" class="{{ request()->is('admin/pesan*') ? 'active' : '' }}">Pesan Masuk</a>
+                <a href="{{ route('pesan.index') }}" class="{{ request()->is('admin/pesan*') ? 'active' : '' }}">
+                    Pesan Masuk
+                </a>
             </li>
             <li>
                 <a href="{{ url('/logout') }}" class="text-danger">Logout</a>

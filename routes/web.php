@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\MasukanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,5 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin/layanan', LayananController::class);
 
     Route::resource('admin/informasi', InformasiController::class);
+
+    Route::resource('admin/pesan', MasukanController::class)->only(['index', 'destroy']);
 
 });
